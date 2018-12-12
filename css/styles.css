@@ -69,16 +69,16 @@ a {
 
 #footer {
   text-align: center;
-  color: #000;
+  color: #00000034;
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#629a4e+0,046936+32,f11a14+33,f11a14+66,046936+67,629a4e+100 */
-  background: #629a4e;
+  background: #00000034;
   /* Old browsers */
-  background: -moz-linear-gradient(top, #629a4e 0%, #046936 32%, #f11a14 33%, #f11a14 66%, #046936 67%, #629a4e 100%);
+  background: -moz-linear-gradient(top, #00000034 0%, #00000034 32%, #00000034 33%, #00000034 66%, #00000034 67%, #00000034 100%);
   /* FF3.6-15 */
-  background: -webkit-linear-gradient(top, #629a4e 0%, #046936 32%, #f11a14 33%, #f11a14 66%, #046936 67%, #629a4e 100%);
+  background: -webkit-linear-gradient(top, #00000034 0%, #00000034 32%, #00000034 33%, #00000034 66%, #00000034 67%, #00000034 100%);
   /* Chrome10-25,Safari5.1-6 */
  /* background: linear-gradient(to bottom, #629a4e 0%, #046936 32%, #f11a14 33%, #f11a14 66%, #046936 67%, #629a4e 100%);*/
-  background: rgba(0,0,0);
+  background: rgba(0, 0, 0, 0.342);
   /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#629a4e', endColorstr='#629a4e',GradientType=0 );
   /* IE6-9 */
@@ -116,7 +116,13 @@ a {
 
 .endereco-footer {
 	color: rgba(255,255,255);
-    font-size: 20px;
+    font-size: 10px;
+    font-family:'Fugaz One',sans-serif;
+    float: left;
+}
+.senai-footer {
+	color: rgba(255,255,255);
+    font-size: 10px;
     font-family:'Fugaz One',sans-serif;
     float: right;
 }
@@ -124,9 +130,16 @@ a {
 @media (max-width:320px){
 	.endereco-footer{
 		color: rgba(255,255,255);
-	    font-size: 16px;
+	    font-size: 10px;
 	    font-family:'Fugaz One',sans-serif;
 	    float: left;
+	    text-align: justify;
+    }
+    .senai-footer{
+		color: rgba(255,255,255);
+	    font-size: 10px;
+	    font-family:'Fugaz One',sans-serif;
+	    float: right;
 	    text-align: justify;
 	}
 	.titulo-footer {
@@ -151,7 +164,13 @@ a {
 @media (max-width:425px) and (min-width: 321px){
 	.endereco-footer{
 		color: rgba(255,255,255);
-	    font-size: 16px;
+	    font-size: 10px;
+	    font-family:'Fugaz One',sans-serif;
+	    text-align: justify;
+    }
+    .senai-footer{
+		color: rgba(255,255,255);
+	    font-size: 6px;
 	    font-family:'Fugaz One',sans-serif;
 	    text-align: justify;
 	}
