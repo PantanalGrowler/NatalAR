@@ -2,7 +2,7 @@
 <html lang="pt">
 <head>
    <beta charset="UTF-8">
-   <title>Natal Pantanal Growler</title>
+   <title>Pantanal Growler</title>
 
    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
    <meta name="apple-mobile-web-app-capable" content="yes">
@@ -40,11 +40,11 @@
       //Detect end of audio
       intro.addEventListener("ended", function() {
 	      intro.currentTime = 0;
-	      laying = false;
+	      playing = false;
       });
       intro2.addEventListener("ended", function() {
 	      intro.currentTime = 0;
-	      laying = false;
+	      playing = false;
       });
       AFRAME.registerComponent('markerhandler', {
 	      init: function() {
@@ -52,7 +52,7 @@
 		      this.tick = AFRAME.utils.throttleTick(this.tick, 500, this);
 	      },
 	      tick: function(t, dt) {
-		      if(document.querySelector("#marcador").object3D.visible == true && playing == false) {
+		      if(document.querySelector("#marcador").object3D.visible == true && playing == false) { // && playing == false - para tocar 1 vez
 			      //MARKER IS PRESENT
 			      intro.play();
                intro2.play();
@@ -92,6 +92,7 @@
       <span class="titulo-footer">Pantanal Growler</span>
       <button id="snap-button"></button>
       <span class="endereco-footer">Rua Paraiba,240 <br>Jd Estados - CG.</span>
+      <span class="senai-footer">Create by SENAI Empresa</span>
    </div>
    <a id="download-link" style="display:none"></a>
 
