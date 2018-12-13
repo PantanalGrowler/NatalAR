@@ -26,9 +26,13 @@
 
    <link href="https://fonts.googleapis.com/css?family=Fira+Sans+Extra+Condensed:400,600" rel="stylesheet">
    <link href="https://fonts.googleapis.com/css?family=Fugaz+One" rel="stylesheet">
+   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+
    <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
    <script src="https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js"></script>
-   <!--<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>-->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/p5.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/addons/p5.dom.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/addons/p5.sound.min.js"></script>
    <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v4.1.2/dist/aframe-extras.min.js"></script>
    <script src="https://unpkg.com/aframe-particle-system-component@1.0.x/dist/aframe-particle-system-component.min.js"></script>
 
@@ -39,31 +43,37 @@
       var intro = new Audio("audio/SantaMotorcycle32b.mp3");
       var intro2 = new Audio("audio/bornmaisreduce.mp3");
       //Detect end of audio
-      intro.addEventListener("ended", function() {
-	      intro.currentTime = 0;
-	      playing = false;
-      });
-      intro2.addEventListener("ended", function() {
-	      intro.currentTime = 0;
-	      playing = false;
-      });
+    
+      function setup() {
+            song = loadSound('audio/SantaMotorcycle32b.mp3');
+            song1 = loadSound('audio/bornmaisreduce.mp3');
+            createCanvas(720, 200);
+      }
       AFRAME.registerComponent('markerhandler', {
 	      init: function() {
 		      // Set up the tick throttling. Will check if marker is active every 500ms
 		      this.tick = AFRAME.utils.throttleTick(this.tick, 500, this);
 	      },
 	      tick: function(t, dt) {
-		      if(document.querySelector("#marcador").object3D.visible == true && playing == false) { // && playing == false - para tocar 1 vez
-			      //MARKER IS PRESENT
-			      intro.play();
-               intro2.play();
-			      playing = true;
-            }
-		      else {
-                  // MARKER IS HIDDEN, do nothing (up to you)
-            }
+                  if (typeof song !== 'undefined'){
+                        if(document.querySelector("#marcador").object3D.visible == true && !song.isPlaying() && !song1.isPlaying()) { // && playing == false - para tocar 1 vez
+                              //MARKER IS PRESENT
+                        song.play();
+                        song1.play();
+                        
+                  //intro2.play();
+                        }
+                        else if (!document.querySelector("#marcador").object3D.visible == true && song.isPlaying() && song1.isPlaying()) {
+                              
+                              song.pause();
+                              song1.pause();
+                        // MARKER IS HIDDEN, do nothing (up to you)
+                        }
+                  }
          }
       });
+
+
    </script>
    <link rel="stylesheet" href="css/styles.css">
 </head>
@@ -99,13 +109,14 @@
 
    <div id="footer">
       <span class="titulo-footer">Pantanal Growler</span>
-      <button id="snap-button"></button>
+      <!--<button id="snap-button"></button>-->
 <div style="float:right;">
       <a href="https://pt-br.facebook.com/pantanalgrowler/">
-	      <img class="logo-face" src="images/logo-facebook.png" style="width:32px; height:32px;"/>
-	</a>
+	      <i class="fab fa-facebook"></i>
+      </a>
+      
       <a href="https://www.instagram.com/pantanalgrowler/?hl=pt-br">
-	      <img class="logo-instagram" src="images/logo-instagram.png" style="width:32px; height:32px;"/>
+	      <i class="fab fa-instagram"></i>
 	</a>
 	<br/>
        <a href="http://www.senaiempresa.ms.senai.br/" class="senai-footer">Create by SENAI Empresa</a>
